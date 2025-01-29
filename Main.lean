@@ -9,27 +9,7 @@ theorem hello_world (a b c : Nat)
 theorem foo (a : Nat) : a + 1 = Nat.succ a := by rfl
 
 
-variable (a b c : ℝ)
-variable (p q r: Prop)
-
-theorem t : p → q → p := fun (hp : p) => fun (hq : q) => hp
-
-theorem t2 (f : p → q) (g : q → r) : p → r :=
-  fun (hp : p) => g (f hp)
-
-theorem triv (a b c : Nat)
-  : a + b + c = a + c + b :=
-  by rw [
-    add_assoc,
-    add_comm b,
-    add_assoc,
-  ]
-
-
-
-#check t2
-
-#eval
+#eval s!"Finished Building {package}"
 
 /-
 潜入萨墓时他已经按耐不住嘴边疯狂的笑容
@@ -44,3 +24,11 @@ theorem triv (a b c : Nat)
 让世间所有的生灵都感受他曾经的痛苦
 让所有生灵都明白弱小即是原罪，他们活该被自己踏入尘土
 -/
+
+theorem ring_is_module (R : Ring carrier) (a b : carrier) :
+  R.op a (R.op b a) = R.op b (R.op a a) :=
+  by
+    rw [
+      R.op_commute a,
+      R.assoc
+    ]
