@@ -1,8 +1,9 @@
 import Soulforge
 
-def main : IO Unit :=
-  IO.println s!"Hello, {hello}!"
+open Nat (add_assoc add_comm)
 
-#eval s!"hello {hello}"
+theorem hello_world (a b c : Nat)
+  : a + b + c = a + c + b := by
+  rw [add_assoc, add_comm b, ←add_assoc]
 
-#eval "Scourge"
+theorem foo (a : Nat) : a + 1 = Nat.succ a := by rfl
