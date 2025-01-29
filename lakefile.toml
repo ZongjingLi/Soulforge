@@ -1,0 +1,10 @@
+name = "Soulforge"
+version = "0.1.0"
+defaultTargets = ["soulforge"]
+
+[[lean_lib]]
+name = "Soulforge"
+
+[[lean_exe]]
+name = "soulforge"
+root = "Main"
