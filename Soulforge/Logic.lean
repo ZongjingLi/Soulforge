@@ -67,7 +67,3 @@ theorem add_pos_nm (n m : Nat) (hn : n > 0) (hm : m > 0) : n + m > 0 :=
  apply add_pos
  exact hn
  exact hm
-
-
-example (X Y Z: Type) : (f : X → Y) → (g : Y → Z) -> True :=
-  by intros f g
