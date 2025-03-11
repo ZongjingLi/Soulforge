@@ -18,7 +18,6 @@ def S : Set Nat := (λ x => x > 3)
 /-#eval S 5  -- True -/
 def A : Set Nat := λ x => x > 3  -- Set of numbers greater than 3
 
-
 structure TopologySpace (α : Type) where
   is_open : Set (α) → Prop
   empty_open: is_open empty_set
@@ -69,3 +68,10 @@ structure Field (carrier : Type) extends CommutativeRing carrier where
 theorem commutative_group_op (G : AbelianGroup carrier) (a b : carrier) :
   G.op a b = G.op b a :=
 G.op_commute a b
+
+structure Module (R : Ring α) extends Group α where
+  vector_distrb : ∀ r a b : α, R.mul r (op a b) = op (R.mul r a) (R.mul r b)
+  scalar_distrb : ∀ a b x : α, R.mul (op a b) x = op (R.mul a x) (R.mul b x)
+  scalar_assoc : ∀ r s x : α, R.mul (R.mul r s) x = R.mul r (R.mul s x)
+  mul_id : ∀ x : α, R.mul one x = x
+  id_mul : ∀ x : α, R.mul x one = x
